@@ -10,4 +10,8 @@ class Radio extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description', 'logo', 'stream', 'website'];
+
+    public function categories() {
+        return $this->belongsToMany(Category::class);
+    }
 }

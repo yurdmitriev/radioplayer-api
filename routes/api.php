@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RadioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,12 @@ Route::post('/radio', [RadioController::class, 'store']);
 Route::patch('/radio/{id}', [RadioController::class, 'update']);
 Route::get('/radio/{id}', [RadioController::class, 'show']);
 Route::delete('/radio/{id}', [RadioController::class, 'destroy']);
+
+Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/category', [CategoryController::class, 'store']);
+Route::get('/category/{id}', [CategoryController::class, 'show']);
+Route::delete('/category/{id}', [CategoryController::class, 'destroy']);
+Route::patch('/category/{id}', [CategoryController::class, 'update']);
+Route::post('/category/{id}', [CategoryController::class, 'attach']);
+Route::get('/category/{id}/radios', [CategoryController::class, 'listMembers']);
+Route::delete('/category/{id}/radios/{radioId}', [CategoryController::class, 'detach']);
