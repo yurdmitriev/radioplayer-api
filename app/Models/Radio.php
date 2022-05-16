@@ -24,7 +24,7 @@ class Radio extends Model
 
         $res = DB::table('category_radio')->select('radio_id')
             ->whereIn('category_id', $categories)
-            ->whereNot('radio_id', '=', $this->id)->orderByRaw('RAND()')->limit(10)->get();
+            ->whereNot('radio_id', '=', $this->id)->inRandomOrder()->limit(10)->get();
 
         foreach ($res as $r) $ids[] = $r->radio_id;
 
