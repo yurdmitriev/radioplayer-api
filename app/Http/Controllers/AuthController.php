@@ -63,7 +63,7 @@ class AuthController extends Controller
                 'avatar' => $user->getAvatar()
             ]
         );
-        $token = $userCreated->createToken('token-name')->plainTextToken;
+        $token = $userCreated->createToken('authToken')->plainTextToken;
 
         return response()->json($userCreated, 200, ['Access-Token' => $token]);
     }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RadioController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->post('/user/favourites', [UserController::class, 'attach']);
+Route::middleware('auth:sanctum')->get('/user/favourites', [UserController::class, 'listFavourites']);
+Route::middleware('auth:sanctum')->delete('/user/favourites/{radioId}', [UserController::class, 'detach']);
 
 Route::get('/login/{provider}', [AuthController::class,'redirectToProvider']);
 Route::get('/login/{provider}/callback', [AuthController::class,'handleProviderCallback']);
