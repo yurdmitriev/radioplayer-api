@@ -23,7 +23,7 @@ class UserController extends Controller {
         return $user->favourites()->detach($radio);
     }
 
-    public function listFavourites($id) {
+    public function listFavourites() {
         return RadioBasicResource::collection(Auth::user()->favourites()->getResults());
     }
 }

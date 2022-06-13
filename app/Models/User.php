@@ -49,6 +49,6 @@ class User extends Authenticatable
     }
 
     public function favourites() {
-        return $this->hasMany(Radio::class);
+        return $this->belongsToMany(Radio::class);
     }
 }
